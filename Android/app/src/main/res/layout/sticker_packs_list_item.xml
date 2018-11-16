@@ -47,7 +47,7 @@
             android:layout_gravity="center_vertical"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            tools:text="Pusheen" />
+            tools:text="Cuicui" />
 
         <TextView
             android:id="@+id/sticker_pack_publisher"
@@ -56,7 +56,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            tools:text="petellison" />
+            tools:text="Khe" />
 
         <TextView
             android:id="@+id/sticker_pack_list_item_dot"
