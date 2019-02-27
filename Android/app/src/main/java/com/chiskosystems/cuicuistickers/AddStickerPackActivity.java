@@ -40,22 +40,21 @@ public abstract class AddStickerPackActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ADD_PACK) {
-            if (resultCode == Activity.RESULT_CANCELED) {
-                if (data != null) {
-                    final String validationError = data.getStringExtra("validation_error");
-                    if (validationError != null) {
-                        if (BuildConfig.DEBUG) {
-                            //validation error should be shown to developer only, not users.
-                            MessageDialogFragment.newInstance(R.string.title_validation_error, validationError).show(getSupportFragmentManager(), "validation error");
-                        }
-                        Log.e("AddStickerPackActivity", "Validation failed:" + validationError);
+        if (requestCode == ADD_PACK && resultCode == Activity.RESULT_CANCELED) {
+            if (data != null) {
+                final String validationError = data.getStringExtra("validation_error");
+                if (validationError != null) {
+                    if (BuildConfig.DEBUG) {
+                        //validation error should be shown to developer only, not users.
+                        MessageDialogFragment.newInstance(R.string.title_validation_error, validationError).show(getSupportFragmentManager(), "validation error");
                     }
-                } else {
-                    new StickerPackNotAddedMessageFragment().show(getSupportFragmentManager(), "sticker_pack_not_added");
+                    Log.e("AddStickerPackActivity", "Validation failed:" + validationError);
                 }
+            } else {
+                new StickerPackNotAddedMessageFragment().show(getSupportFragmentManager(), "sticker_pack_not_added");
             }
         }
+
     }
 
     public static final class StickerPackNotAddedMessageFragment extends DialogFragment {
